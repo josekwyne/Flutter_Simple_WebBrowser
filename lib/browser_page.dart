@@ -11,7 +11,7 @@ class BrowserPage extends StatefulWidget {
 class _BrowserPageState extends State<BrowserPage> {
   late TextEditingController textEditingController;
   late WebViewController webViewController;
-  String searchEngineUrl = "https://www.google.com/";
+  String searchEngineUrl = "https://pos.nanoposafrica.com/pos";
   bool isLoading = false;
 
   @override
@@ -49,7 +49,6 @@ class _BrowserPageState extends State<BrowserPage> {
             child: Scaffold(
               body: Column(
                 children: [
-                  _buildTopWidget(),
                   _buildLoadingWidget(),
                   Expanded(child: _buildWebWidget()),
                   _buildBottomWidget(),
@@ -75,45 +74,45 @@ class _BrowserPageState extends State<BrowserPage> {
     webViewController.loadRequest(uri);
   }
 
-  _buildTopWidget() {
-    return Padding(
-      padding: const EdgeInsets.all(5.0),
-      child: Container(
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          border: Border.all(),
-          borderRadius: const BorderRadius.all(Radius.circular(32)),
-        ),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            IconButton(
-              onPressed: () {
-                loadUrl(searchEngineUrl);
-              },
-              icon: const Icon(Icons.home),
-            ),
-            Expanded(
-                child: TextField(
-              controller: textEditingController,
-              decoration: const InputDecoration(
-                border: InputBorder.none,
-                hintText: "Search or type web address",
-              ),
-              onSubmitted: (value) {
-                loadUrl(value);
-              },
-            )),
-            IconButton(
-                onPressed: () {
-                  textEditingController.clear();
-                },
-                icon: const Icon(Icons.cancel))
-          ],
-        ),
-      ),
-    );
-  }
+  // _buildTopWidget() {
+  //   return Padding(
+  //     padding: const EdgeInsets.all(5.0),
+  //     child: Container(
+  //       alignment: Alignment.center,
+  //       decoration: BoxDecoration(
+  //         border: Border.all(),
+  //         borderRadius: const BorderRadius.all(Radius.circular(32)),
+  //       ),
+  //       child: Row(
+  //         crossAxisAlignment: CrossAxisAlignment.center,
+  //         children: [
+  //           IconButton(
+  //             onPressed: () {
+  //               loadUrl(searchEngineUrl);
+  //             },
+  //             icon: const Icon(Icons.home),
+  //           ),
+  //           Expanded(
+  //               child: TextField(
+  //             controller: textEditingController,
+  //             decoration: const InputDecoration(
+  //               border: InputBorder.none,
+  //               hintText: "Search or type web address",
+  //             ),
+  //             onSubmitted: (value) {
+  //               loadUrl(value);
+  //             },
+  //           )),
+  //           IconButton(
+  //               onPressed: () {
+  //                 textEditingController.clear();
+  //               },
+  //               icon: const Icon(Icons.cancel))
+  //         ],
+  //       ),
+  //     ),
+  //   );
+  // }
 
   _buildLoadingWidget() {
     return Container(
